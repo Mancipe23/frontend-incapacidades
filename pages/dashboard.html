@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard</title>
+
+<link rel="stylesheet"
+      href="../css/styles.css">
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+    <h1>Panel Principal</h1>
+
+    <button onclick="window.location.href='empleados.html'">
+        Empleados
+    </button>
+
+    <button onclick="window.location.href='incapacidades.html'">
+        Incapacidades
+    </button>
+
+    <button onclick="window.location.href='seguimientos.html'">
+        Seguimientos
+    </button>
+
+    <button onclick="cerrarSesion()">
+        Cerrar Sesión
+    </button>
+
+</div>
+
+<script>
+
+    function cerrarSesion() {
+
+        localStorage.removeItem('token');
+
+        window.location.href =
+            '../index.html';
+    }
+
+</script>
+
+</body>
+
+</html>
