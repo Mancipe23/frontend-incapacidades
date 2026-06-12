@@ -24,37 +24,78 @@
 
     <h2>Registrar Incapacidad</h2>
 
-    <input type="number"
-           id="empleado_id"
-           placeholder="ID Empleado">
+    <input
+        type="number"
+        id="empleado_id"
+        placeholder="ID Empleado">
 
-    <input type="date"
-           id="fecha_inicio">
+    <br><br>
 
-    <input type="date"
-           id="fecha_fin">
+    <input
+        type="date"
+        id="fecha_inicio">
 
-    <input type="text"
-           id="tipo"
-           placeholder="Tipo">
+    <br><br>
 
-    <input type="text"
-           id="diagnostico_general"
-           placeholder="Diagnóstico">
+    <input
+        type="date"
+        id="fecha_fin">
 
-    <input type="text"
-           id="entidad_medica"
-           placeholder="Entidad Médica">
+    <br><br>
 
-    <input type="text"
-           id="observaciones"
-           placeholder="Observaciones">
+    <label>Tipo de incapacidad:</label>
+
+    <br><br>
+
+    <select id="tipo">
+
+        <option value="enfermedad_general">
+            Enfermedad General
+        </option>
+
+        <option value="accidente_laboral">
+            Accidente Laboral
+        </option>
+
+        <option value="licencia_medica">
+            Licencia Médica
+        </option>
+
+        <option value="incapacidad_temporal">
+            Incapacidad Temporal
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <input
+        type="text"
+        id="diagnostico_general"
+        placeholder="Diagnóstico General">
+
+    <br><br>
+
+    <input
+        type="text"
+        id="entidad_medica"
+        placeholder="Entidad Médica">
+
+    <br><br>
+
+    <textarea
+        id="observaciones"
+        placeholder="Observaciones"></textarea>
+
+    <br><br>
 
     <button onclick="registrarIncapacidad()">
         Registrar Incapacidad
     </button>
 
     <br><br>
+
+    <h2>Historial de Incapacidades</h2>
 
     <table border="1" width="100%">
 
@@ -78,7 +119,7 @@
 
     </table>
 
-    <br>
+    <br><br>
 
     <button onclick="window.location.href='dashboard.html'">
         Volver
