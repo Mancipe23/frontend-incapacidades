@@ -5,54 +5,140 @@ if (!localStorage.getItem('token')) {
 
 }
 
-async function cargarEmpleados() {
+async function registrarEmpleado() {
 
-try {
+    try {
 
-    const respuesta = await fetch(
-        'http://localhost/backend-incapacidades/ms-empleados/public/empleados'
-    );
+        const datos = {
 
-    const empleados =
-        await respuesta.json();
+            nombres:
+                document.getElementById(
+                    'nombres'
+                ).value,
 
-    const tabla =
-        document.getElementById(
-            'tablaEmpleados'
+            apellidos:
+                document.getElementById(
+                    'apellidos'
+                ).value,
+
+            documento:
+                document.getElementById(
+                    'documento'
+                ).value,
+
+            correo:
+                document.getElementById(
+                    'correo'
+                ).value,
+
+            telefono:
+                document.getElementById(
+                    'telefono'
+                ).value,
+
+            cargo:
+                document.getElementById(
+                    'cargo'
+                ).value,
+
+            area:
+                document.getElementById(
+                    'area'
+                ).value,
+
+            fecha_ingreso:
+                document.getElementById(
+                    'fecha_ingreso'
+                ).value
+
+        };
+
+        const respuesta = await fetch(
+
+            'http://localhost/backend-incapacidades/ms-empleados/public/empleados',
+
+            {
+                method: 'POST',
+
+                headers: {
+                    'Content-Type':
+                        'application/json'
+                },
+
+                body: JSON.stringify(
+                    datos
+                )
+            }
         );
 
-    empleados.forEach(
-        empleado => {
+        const resultado =
+            await respuesta.json();
 
-            tabla.innerHTML += `
+        alert(
+            resultado.mensaje
+        );
 
-            <tr>
+        location.reload();
 
-                <td>${empleado.id}</td>
+    } catch (error) {
 
-                <td>${empleado.nombres}</td>
+        console.error(error);
 
-                <td>${empleado.apellidos}</td>
-
-                <td>${empleado.cargo}</td>
-
-                <td>${empleado.area}</td>
-
-            </tr>
-
-            `;
-        }
-    );
-
-} catch (error) {
-
-    console.error(error);
-
-    alert(
-        'Error cargando empleados'
-    );
+        alert(
+            'Error registrando empleado'
+        );
+    }
 }
 
+async function cargarEmpleados() {
+
+    try {
+
+        const respuesta = await fetch(
+            'http://localhost/backend-incapacidades/ms-empleados/public/empleados'
+        );
+
+        const empleados =
+            await respuesta.json();
+
+        const tabla =
+            document.getElementById(
+                'tablaEmpleados'
+            );
+
+        tabla.innerHTML = '';
+
+        empleados.forEach(
+            empleado => {
+
+                tabla.innerHTML += `
+
+                <tr>
+
+                    <td>${empleado.id}</td>
+
+                    <td>${empleado.nombres}</td>
+
+                    <td>${empleado.apellidos}</td>
+
+                    <td>${empleado.cargo}</td>
+
+                    <td>${empleado.area}</td>
+
+                </tr>
+
+                `;
+            }
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            'Error cargando empleados'
+        );
+    }
 }
 
 cargarEmpleados();

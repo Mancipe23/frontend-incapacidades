@@ -5,56 +5,127 @@ if (!localStorage.getItem('token')) {
 
 }
 
-async function cargarSeguimientos() {
+async function registrarSeguimiento() {
 
-try {
+    try {
 
-    const respuesta = await fetch(
-        'http://localhost/backend-incapacidades/ms-seguimiento/public/seguimientos'
-    );
+        const datos = {
 
-    const seguimientos =
-        await respuesta.json();
+            incapacidad_id:
+                document.getElementById(
+                    'incapacidad_id'
+                ).value,
 
-    const tabla =
-        document.getElementById(
-            'tablaSeguimientos'
+            fecha:
+                document.getElementById(
+                    'fecha'
+                ).value,
+
+            comentario:
+                document.getElementById(
+                    'comentario'
+                ).value,
+
+            estado:
+                document.getElementById(
+                    'estado'
+                ).value,
+
+            usuario_responsable:
+                document.getElementById(
+                    'usuario_responsable'
+                ).value
+
+        };
+
+        const respuesta = await fetch(
+
+            'http://localhost/backend-incapacidades/ms-seguimiento/public/seguimientos',
+
+            {
+                method: 'POST',
+
+                headers: {
+                    'Content-Type':
+                        'application/json'
+                },
+
+                body: JSON.stringify(
+                    datos
+                )
+            }
         );
 
-    seguimientos.forEach(
-        seguimiento => {
+        const resultado =
+            await respuesta.json();
 
-            tabla.innerHTML += `
+        alert(
+            resultado.mensaje
+        );
 
-            <tr>
+        location.reload();
 
-                <td>${seguimiento.id}</td>
+    } catch (error) {
 
-                <td>${seguimiento.incapacidad_id}</td>
+        console.error(error);
 
-                <td>${seguimiento.fecha}</td>
-
-                <td>${seguimiento.comentario}</td>
-
-                <td>${seguimiento.estado}</td>
-
-                <td>${seguimiento.usuario_responsable}</td>
-
-            </tr>
-
-            `;
-        }
-    );
-
-} catch (error) {
-
-    console.error(error);
-
-    alert(
-        'Error cargando seguimientos'
-    );
+        alert(
+            'Error registrando seguimiento'
+        );
+    }
 }
 
+async function cargarSeguimientos() {
+
+    try {
+
+        const respuesta = await fetch(
+            'http://localhost/backend-incapacidades/ms-seguimiento/public/seguimientos'
+        );
+
+        const seguimientos =
+            await respuesta.json();
+
+        const tabla =
+            document.getElementById(
+                'tablaSeguimientos'
+            );
+
+        tabla.innerHTML = '';
+
+        seguimientos.forEach(
+            seguimiento => {
+
+                tabla.innerHTML += `
+
+                <tr>
+
+                    <td>${seguimiento.id}</td>
+
+                    <td>${seguimiento.incapacidad_id}</td>
+
+                    <td>${seguimiento.fecha}</td>
+
+                    <td>${seguimiento.comentario}</td>
+
+                    <td>${seguimiento.estado}</td>
+
+                    <td>${seguimiento.usuario_responsable}</td>
+
+                </tr>
+
+                `;
+            }
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            'Error cargando seguimientos'
+        );
+    }
 }
 
 cargarSeguimientos();

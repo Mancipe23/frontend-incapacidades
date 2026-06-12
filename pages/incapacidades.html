@@ -14,7 +14,6 @@
 <link rel="stylesheet"
       href="../css/styles.css">
 
-
 </head>
 
 <body>
@@ -22,6 +21,40 @@
 <div class="page-container">
 
     <h1>Incapacidades</h1>
+
+    <h2>Registrar Incapacidad</h2>
+
+    <input type="number"
+           id="empleado_id"
+           placeholder="ID Empleado">
+
+    <input type="date"
+           id="fecha_inicio">
+
+    <input type="date"
+           id="fecha_fin">
+
+    <input type="text"
+           id="tipo"
+           placeholder="Tipo">
+
+    <input type="text"
+           id="diagnostico_general"
+           placeholder="Diagnóstico">
+
+    <input type="text"
+           id="entidad_medica"
+           placeholder="Entidad Médica">
+
+    <input type="text"
+           id="observaciones"
+           placeholder="Observaciones">
+
+    <button onclick="registrarIncapacidad()">
+        Registrar Incapacidad
+    </button>
+
+    <br><br>
 
     <table border="1" width="100%">
 

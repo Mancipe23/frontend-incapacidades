@@ -6,9 +6,6 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
 <title>Seguimientos</title>
 
 <link rel="stylesheet"
@@ -22,6 +19,33 @@
 
     <h1>Seguimientos</h1>
 
+    <h2>Registrar Seguimiento</h2>
+
+    <input type="number"
+           id="incapacidad_id"
+           placeholder="ID Incapacidad">
+
+    <input type="date"
+           id="fecha">
+
+    <input type="text"
+           id="comentario"
+           placeholder="Comentario">
+
+    <input type="text"
+           id="estado"
+           placeholder="Estado">
+
+    <input type="text"
+           id="usuario_responsable"
+           placeholder="Responsable">
+
+    <button onclick="registrarSeguimiento()">
+        Registrar Seguimiento
+    </button>
+
+    <br><br>
+
     <table border="1">
 
         <thead>
@@ -29,15 +53,10 @@
             <tr>
 
                 <th>ID</th>
-
                 <th>Incapacidad</th>
-
                 <th>Fecha</th>
-
                 <th>Comentario</th>
-
                 <th>Estado</th>
-
                 <th>Responsable</th>
 
             </tr>
